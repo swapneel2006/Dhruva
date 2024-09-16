@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Dhruva!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .birthday-card {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            animation: fadeIn 2s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        .birthday-card h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: -webkit-linear-gradient(#ff6a00, #ee0979);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .message {
+            font-size: 1.4em;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #202107;
+        }
+
+        .hidden-message {
+            text-shadow: black;
+            font-size: 1.4em;
+            color: #0bff44;
+            margin-top: 20px;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: visibility 0s, opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .visible {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .balloons {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .balloon {
+            width: 50px;
+            height: 70px;
+            background-color: #ff5733;
+            border-radius: 50%;
+            position: absolute;
+            animation: floatUp 6s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-800px); }
+        }
+
+        .balloon:nth-child(2) { background-color: #ffcc33; left: 20%; animation-duration: 5s; }
+        .balloon:nth-child(3) { background-color: #33ccff; left: 40%; animation-duration: 7s; }
+        .balloon:nth-child(4) { background-color: #ff33cc; left: 60%; animation-duration: 4s; }
+        .balloon:nth-child(5) { background-color: #33ff77; left: 80%; animation-duration: 6s; }
+    </style>
+</head>
+<body>
+
+<div class="birthday-card">
+    <h1>Happy Birthday Dhruva!</h1>
+    <div class="message" id="birthdayMessage"></div>
+   
+    <div class="hidden-message" id="hiddenMessage">Don't forget to give a party!</div>
+</div>
+
+<div class="balloons">
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        typeWriter();
+    });
+
+    let i = 0;
+    const message = "Wishing you a day filled with joy, laughter, and unforgettable moments. Have an amazing year ahead!";
+    const displayMessage = document.getElementById('birthdayMessage');
+
+    function typeWriter() {
+        if (i < message.length) {
+            displayMessage.innerHTML += message.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+        }
+    }
+
+    function revealMessage() {
+        const hiddenMessage = document.getElementById('hiddenMessage');
+        hiddenMessage.classList.add('visible');
+    }
+</script>
+
+</body>
+</html>
